@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text="${message}">inputCheckbox</h1>
+	<form method="post"  action="/saveCheckBox">
+		<div>
+			<label>タイトル：</label><input type="text" name="title">
+		</div>
+		<label  th:each="item:${genreCheckBox}" th:object="${genreForm}">
+			<input type="checkbox" name="selectedCheckBoxForm" th:value="${item.key}" 
+			th:text="${item.value}" th:field="*{selectGenre}"/>
+		</label>
+		<div>
+			<input type="submit" value="送信">
+		</div>
+	</form>
+</body>
+</html>
